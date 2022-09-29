@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
 	try {
-		const ideas = await db.Ideas.findAll()
+		const ideas = await db.Ideas.findAll({include: db.Fundings})
 		res.json(ideas);
 	} catch (err) {
 		console.log(err);
