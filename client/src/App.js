@@ -8,19 +8,27 @@ import Login from "./pages/public/Login";
 import Register from "./pages/public/Register";
 import Ideas from "./pages/public/Ideas";
 import NewIdea from "./pages/public/NewIdea";
-import AdminIdeas from "./pages/admin/ideas/Ideas";
+import Admin from "./pages/admin/Admin";
 import "./App.css";
 
 function App() {
+  const [alert, setAlert] = useState({
+    message: "",
+    status: "",
+  });
   const [userInfo, setUserInfo] = useState({});
-  const contextValues = { userInfo, setUserInfo };
-  // useEffect(() => {
-  // 	axios.get("/api/users/check-auth/")
-  // 	.then(resp => {
-  // 			setUserInfo(resp.data)
-  // 		}).catch(err => {
-  // 		console.log(err)
-  // 		})}, [])
+  const [refresh, setRefresh] = useState(false);
+  const contextValues = { userInfo, setUserInfo, alert, setAlert, setRefresh };
+  useEffect(() => {
+    axios
+      .get("/api/admins/check-auth/")
+      .then((resp) => {
+        setUserInfo(resp.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [refresh]);
   return (
     <BrowserRouter>
       <MainContext.Provider value={contextValues}>
@@ -28,7 +36,7 @@ function App() {
         <Alert />
         <div className="App">
           <Routes>
-            <Route path="/admin/ideas" element={<AdminIdeas />} />
+            <Route path="/admin" element={<Admin />} />
             <Route path="/" element={<Ideas />} />
             <Route path="/newIdea" element={<NewIdea />} />
             <Route path="/login" element={<Login />} />

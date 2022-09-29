@@ -33,6 +33,7 @@
 .nav-link {
   color: var(--cc-grey);
   text-decoration: none;
+  cursor: pointer;
 }
 
 .nav-link:hover {

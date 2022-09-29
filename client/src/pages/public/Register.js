@@ -16,10 +16,10 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("/api/users/register", form)
+      .post("/api/admins/register", form)
       .then((resp) => {
         setAlert({ message: resp.data, status: "success" });
-        navigate("/");
+        navigate("/login");
       })
       .catch((err) => {
         setAlert({ message: err.response.data, status: "danger" });
@@ -72,7 +72,7 @@ const Register = () => {
         </div>
         <button className="form--btn">Tęsti</button>
       </form>
-      <Link to={"/"} className="link">
+      <Link to={"/login"} className="link">
         ← Back
       </Link>
     </main>

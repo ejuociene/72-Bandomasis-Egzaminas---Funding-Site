@@ -28,22 +28,29 @@ const Header = () => {
           <img src={logo} alt="logo" className="logo" />
         </div>
         <ul className="nav-list">
-          <li className="nav-item">
+          <li>
             <Link to="/" className="nav-link">
               Idėjos
             </Link>
           </li>
-          <li className="nav-item">
+          <li>
             <Link to="/newIdea" className="nav-link">
               + Nauja idėja
             </Link>
           </li>
           {userInfo.id ? (
-            <li className="nav-item nav-link" onClick={() => logout()}>
-              Atsijungti
-            </li>
+            <>
+              <li>
+                <Link to="/admin" className="nav-link">
+                  Administratorius
+                </Link>
+              </li>
+              <li className="nav-link" onClick={() => logout()}>
+                Atsijungti
+              </li>
+            </>
           ) : (
-            <li className="nav-item last-nav">
+            <li>
               <Link to="/login" className="nav-link">
                 Prisijungti
               </Link>

@@ -13,15 +13,19 @@ const NewIdea = () => {
   });
   const handleChange = (e) => {
     setForm((prevForm) => {
-      return { ...prevForm, [e.target.name]: e.target.name === 'image' ? e.target.files[0] : e.target.value};
+      return {
+        ...prevForm,
+        [e.target.name]:
+          e.target.name === "image" ? e.target.files[0] : e.target.value,
+      };
     });
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-		const ideaForm = new FormData();
-		for (const key in form) {
-			ideaForm.append(key, form[key]);
-		}
+    const ideaForm = new FormData();
+    for (const key in form) {
+      ideaForm.append(key, form[key]);
+    }
     axios
       .post("/api/ideas/new", ideaForm)
       .then((resp) => {
@@ -43,12 +47,12 @@ const NewIdea = () => {
       <form className="form" onSubmit={(e) => handleSubmit(e)}>
         <textarea
           className="form-input"
-		  rows={10}
+          rows={10}
           name="text"
           onChange={(e) => handleChange(e)}
         />
         <div className="form--item">
-			<label>Sumos tikslas:</label>
+          <label>Sumos tikslas:</label>
           <input
             type="number"
             className="form-input narrow-input"
@@ -56,10 +60,14 @@ const NewIdea = () => {
             onChange={(e) => handleChange(e)}
           />
         </div>
-		<div className="form--item">
-		<label>Nuotrauka:</label>
-			<input type="file" name="image" onChange={(e) => handleChange(e)}></input>
-		</div>
+        <div className="form--item">
+          <label>Nuotrauka:</label>
+          <input
+            type="file"
+            name="image"
+            onChange={(e) => handleChange(e)}
+          ></input>
+        </div>
         <button>Išsaugoti</button>
       </form>
     </div>

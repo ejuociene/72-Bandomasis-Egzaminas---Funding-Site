@@ -46,7 +46,7 @@ section {
   --cb-light: 230, 232, 230;
   --cc-grey: #848484;
   --cc-darkgreen: #4c5d29;
-  --cc-green: #7d9345;
+  --cc-green: 125, 147, 69;
   --cc-yellow: #ffc14a;
 
   --svg-filter: invert(17%) sepia(44%) saturate(330%) hue-rotate(60deg)

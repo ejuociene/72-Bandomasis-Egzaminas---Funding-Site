@@ -5,7 +5,8 @@ import { useNavigate, Link } from "react-router-dom";
 import MainContext from "../../context/MainContext";
 
 const Login = () => {
-  const { setUserInfo, userInfo, setAlert } = useContext(MainContext);
+  const { setUserInfo, userInfo, setAlert, setRefresh } =
+    useContext(MainContext);
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -19,16 +20,11 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("/api/users/login", form)
+      .post("/api/admins/login", form)
       .then((resp) => {
         setAlert({ message: resp.data, status: "success" });
-        setTimeout(() => {
-          if (userInfo.role === "1") {
-            navigate("/admin");
-          } else {
-            navigate("/salons");
-          }
-        }, 500);
+        setRefresh((prevState) => !prevState);
+        setTimeout(() => navigate("/admin"), 500);
       })
       .catch((err) => {
         console.log(err);
@@ -63,7 +59,7 @@ const Login = () => {
       </form>
       <div>
         Neturite paskyros?{" "}
-        <Link to={"/register"} className="link">
+        <Link to={"/register"} className="link bold">
           Registruotis
         </Link>
       </div>
