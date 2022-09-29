@@ -17,8 +17,11 @@ const validate = (schema, req, res, next) => {
 			case 'password':
 				message = 'Slaptažodis turi turėti nuo 5 iki 12 ženklų';
 				break;
+			case 'goal': 
+				message = "Sumos tikslas turi būti daugiau nei nulis"
+				break;
 			default:
-				message = 'Visi laukeliai privalo būti užpildyti';
+				message = 'Prašome užpildyti visus laukelius';
 				break;
 		}
 		return res.status(500).send(message);
@@ -49,7 +52,7 @@ export const ideasValidator = (req, res, next) => {
 	const schema = Joi.object({
 		text: Joi.string().required(),
 		image: Joi.string(),
-		goal: Joi.number().precision(2).required(),
+		goal: Joi.number().precision(2).min(1).required(),
 		raisedAmount: Joi.number().precision(2).allow(""),
 	});
 	validate(schema, req, res, next);

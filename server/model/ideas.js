@@ -20,6 +20,10 @@ const Ideas = (sequelize) => {
 		status: {
 			type: DataTypes.BOOLEAN,
 			defaultValue: 0
+		},
+		isCompleted: {
+			type: DataTypes.BOOLEAN,
+			defaultValue: 0
 		}
 	};
 	return sequelize.define('ideas', Schema);

@@ -1,5 +1,5 @@
-import { useState, useEffect, useContext } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import MainContext from "../../context/MainContext";
 import axios from "axios";
 
@@ -68,7 +68,7 @@ const NewIdea = () => {
             onChange={(e) => handleChange(e)}
           ></input>
         </div>
-        <button>Išsaugoti</button>
+        <button>Siųsti patvirtinimui</button>
       </form>
     </div>
   );

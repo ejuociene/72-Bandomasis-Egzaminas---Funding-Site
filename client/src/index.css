@@ -54,8 +54,7 @@ section {
   --svg-hover: invert(44%) sepia(14%) saturate(987%) hue-rotate(46deg)
     brightness(102%) contrast(84%);
 
-  --ff-heading: "Merriweather", serif;
-  --ff-text: "Montserrat", sans-serif;
+  --ff-text: 'Montserrat', sans-serif;
 }
 
 * {
@@ -63,7 +62,6 @@ section {
 }
 
 body {
-  background-color: rgb(var(--cb-light));
   font-family: var(--ff-text);
   color: rgb(var(--c-dark-green));
 }

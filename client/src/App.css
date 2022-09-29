@@ -16,6 +16,27 @@
   margin: 2rem 10rem;
 }
 
+.intro {
+  width: 85rem;
+  height: 20rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.intro-heading {
+font-size: 36px;
+font-weight: 800;
+width: 20rem;
+padding-bottom: 2rem;
+}
+
+.intro-img {
+  height: 30rem
+}
+
 .heading {
   display: flex;
   justify-content: space-between;
@@ -23,8 +44,9 @@
 }
 
 .title {
-  font-size: 2rem;
-  font-family: var(--ff-heading);
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-family: var(--ff-text);
   margin: 1rem 0 2rem 0;
 }
 
@@ -37,7 +59,7 @@
 .idea-card {
   width: 100rem;
   display: flex;
-  background-color: white;
+  background-color: rgba(var(--cb-light), 0.4);
   padding: 1rem;
   border-radius: 1rem;
   gap: 1rem;
@@ -52,7 +74,7 @@
 }
 
 .idea-info {
-  width: 40rem;
+  width: 35rem;
   padding: 1rem;
 }
 
@@ -66,11 +88,22 @@
 }
 
 .idea-fundings-container {
+  margin-left: 2rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
   padding: 1rem;
 }
+
+.funder-table > th, td {
+  padding-right: 1rem;
+  padding-bottom: 0.5rem
+}
+
+.funder-table > thead {
+  font-weight: 600;
+}
+
 
 .form {
   display: flex;
@@ -90,8 +123,7 @@
   font-weight: 600;
 }
 
-.form-input,
-.form-select {
+.form-input {
   width: 100%;
   padding: 0.8rem 1rem;
   border: 1px solid lightgrey;
@@ -128,21 +160,15 @@
   color: white;
 }
 
-.form-photo {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-}
-
 .form--btn {
-  width: 7rem;
+  width: 6rem;
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   border: none;
   display: block;
   cursor: pointer;
   font-family: var(--ff-text);
-  background-color: rgb(var(--c-light-green));
+  background-color: var(--cc-darkgreen);
   color: white;
 }
 
@@ -158,7 +184,7 @@
 /* ALERT MESSAGE */
 
 .alert {
-  width: 20rem;
+  width: 30rem;
   margin: 1rem auto;
   text-align: center;
   padding: 0.5rem 1rem;
@@ -173,75 +199,3 @@
   background-color: rgba(229, 152, 155, 0.2);
 }
 
-/* SINGLE PAGE */
-
-.info-container {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.grey {
-  color: grey;
-}
-
-.info-text {
-  font-size: 1.2rem;
-}
-
-.info-icon {
-  height: 1.2rem;
-  filter: var(--svg-filter);
-  padding-right: 1rem;
-}
-
-.sub-container {
-  margin-top: 3rem;
-}
-
-.sub-title {
-  font-size: 1.5rem;
-  font-family: var(--ff-heading);
-  font-weight: 600;
-  margin-bottom: 1rem;
-}
-
-.services-container {
-  margin-top: 1rem;
-  font-size: 1.1rem;
-}
-
-.info-line {
-  display: flex;
-  gap: 2rem;
-}
-
-/* SALONS LIST */
-
-.salons-list {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 2rem;
-  width: 100%;
-}
-
-.salon-card {
-  padding: 1rem 1rem 2rem 2rem;
-  border: 1px solid lightgrey;
-  border-radius: 1rem;
-  background-color: white;
-}
-
-/* WORKERS LIST */
-.worker-photo {
-  height: 10rem;
-  width: 10rem;
-  object-fit: cover;
-  border-radius: 50%;
-}
-
-/* .flex-row {
-	display: flex;
-	gap: 0.5rem;
-	padding: 0.5rem 0;
-} */

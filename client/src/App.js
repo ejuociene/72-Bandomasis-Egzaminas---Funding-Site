@@ -36,12 +36,12 @@ function App() {
         <Alert />
         <div className="App">
           <Routes>
-            <Route path="/admin" element={<Admin />} />
             <Route path="/" element={<Ideas />} />
             <Route path="/newIdea" element={<NewIdea />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="*" element={<Ideas />} />
+           {userInfo.id && <Route path="/admin" element={<Admin />} />}
           </Routes>
         </div>
       </MainContext.Provider>

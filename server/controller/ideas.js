@@ -2,13 +2,23 @@ import express from 'express';
 import db from '../database/connect.js';
 import { ideasValidator } from '../middleware/validate.js';
 import upload from "../middleware/multer.js"
-// import { auth, adminAuth } from '../middleware/auth.js';
+import {auth}  from '../middleware/auth.js';
 
 const router = express.Router();
 
-router.get('/', async (req, res) => {
+router.get('/', auth, async (req, res) => {
 	try {
-		const ideas = await db.Ideas.findAll({include: db.Fundings})
+		const ideas = await db.Ideas.findAll()
+		res.json(ideas);
+	} catch (err) {
+		console.log(err);
+		res.status(500).send('Įvyko serverio klaida');
+	}
+});
+
+router.get('/confirmed', async (req, res) => {
+	try {
+		const ideas = await db.Ideas.findAll({where: {status: 1}, order: ['isCompleted'], include: db.Fundings})
 		res.json(ideas);
 	} catch (err) {
 		console.log(err);
@@ -22,39 +32,29 @@ router.post('/new', upload.single("image"), ideasValidator, async (req, res) => 
 			req.body.image = '/uploads/' + req.file.filename;
 		}
 		await db.Ideas.create(req.body);
-		res.send('Nauja idėja sėkmingai pridėta');
+		res.send('Dėkojame už Jūsų idėją, laukiama administratoriaus patvirtinimo');
 	} catch (err) {
 		console.log(err);
 		res.status(500).send('Įvyko serverio klaida');
 	}
 });
 
-router.get('/:id', async (req, res) => {
-	try {
-		const idea = await db.Ideas.findByPk(req.params.id);
-		res.json(idea);
-	} catch (err) {
-		console.log(err);
-		res.status(500).send('Įvyko serverio klaida');
-	}
-});
-
-router.put('/confirm/:ideaId', async (req, res) => {
+router.put('/confirm/:ideaId', auth, async (req, res) => {
 	try {
 		const idea = await db.Ideas.findByPk(req.params.ideaId);
 		await idea.update({ status: 1 });
-		res.send('Iėja sėkmingai patvirtinta');
+		res.send('Idėja sėkmingai patvirtinta');
 	} catch (err) {
 		console.log(err);
 		res.status(500).send('Įvyko serverio klaida');
 	}
 });
 
-router.delete('/delete/:id', async (req, res) => {
+router.delete('/delete/:id', auth, async (req, res) => {
 	try {
 		const idea = await db.Ideas.findByPk(req.params.id);
 		await idea.destroy();
-		res.send('Idėja išstrinta');
+		res.send('Idėja ištrinta');
 	} catch (err) {
 		console.log(err);
 		res.status(500).send('Įvyko serverio klaida');

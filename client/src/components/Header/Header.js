@@ -30,7 +30,7 @@ const Header = () => {
         <ul className="nav-list">
           <li>
             <Link to="/" className="nav-link">
-              Idėjos
+             Visos idėjos
             </Link>
           </li>
           <li>

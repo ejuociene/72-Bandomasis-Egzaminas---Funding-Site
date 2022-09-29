@@ -9,7 +9,7 @@ const Alert = () => {
         setAlert({ message: "" });
       }, 5000);
     }
-  }, [alert]);
+  }, [alert, setAlert]);
   return (
     alert?.message && (
       <div className={"alert alert-" + alert.status}>{alert.message}</div>

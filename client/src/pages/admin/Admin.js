@@ -16,10 +16,10 @@ const Admin = () => {
         console.log(error);
         setAlert({ message: error.response.data, status: "danger" });
       });
-  }, [setAlert, navigate]);
+  }, [setAlert, navigate, refresh]);
   const handleDelete = (id) => {
     axios.delete(`api/ideas/delete/${id}`).then(resp => {
-      setAlert(resp.data)
+      setAlert({message: resp.data, status: "success"})
       setRefresh(prevState => !prevState)
     }).catch((error) => {
       console.log(error);
@@ -29,8 +29,8 @@ const Admin = () => {
   }
   const confirmIdea = (id) => {
     axios.put(`api/ideas/confirm/${id}`).then(resp => {
-      setAlert(resp.data);
       setRefresh(prevState => !prevState)
+      setAlert({message: resp.data, status: "success"});
     }).catch((error) => {
       console.log(error);
       setAlert({ message: error.response.data, status: "danger" });
