@@ -48,7 +48,7 @@ export const loginValidator = (req, res, next) => {
 export const ideasValidator = (req, res, next) => {
 	const schema = Joi.object({
 		text: Joi.string().required(),
-		photo: Joi.string(),
+		image: Joi.string(),
 		goal: Joi.number().precision(2).required(),
 		raisedAmount: Joi.number().precision(2).allow(""),
 	});
@@ -57,7 +57,7 @@ export const ideasValidator = (req, res, next) => {
 
 export const fundingsValidator = (req, res, next) => {
 	const schema = Joi.object({
-		fullName: Joi.string().min(1).required(),
+		fullName: Joi.any().required(),
 		amount: Joi.number().precision(2).required()
 	});
 	validate(schema, req, res, next);

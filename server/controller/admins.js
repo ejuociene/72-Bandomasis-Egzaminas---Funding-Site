@@ -9,13 +9,13 @@ const saltRounds = 10;
 
 router.post('/register', registerValidator, async (req, res) => {
 	try {
-		const userExists = await db.Users.findOne({ where: { email: req.body.email } });
+		const userExists = await db.Admins.findOne({ where: { email: req.body.email } });
 		if (userExists) {
 			res.status(401).send('Šis el.paštas jau registruotas anksčiau');
 			return;
 		}
 		req.body.password = await bcrypt.hash(req.body.password, saltRounds);
-		await db.Users.create(req.body);
+		await db.Admins.create(req.body);
 		res.send('Registracija sėkminga');
 	} catch (err) {
 		console.log(err);
@@ -25,7 +25,7 @@ router.post('/register', registerValidator, async (req, res) => {
 
 router.post('/login', loginValidator, async (req, res) => {
 	try {
-		const user = await db.Users.findOne({ where: { email: req.body.email } });
+		const user = await db.Admins.findOne({ where: { email: req.body.email } });
 		if (!user) {
 			return res.status(401).send('Toks vartotojas neegzistuoja');
 		}
