@@ -65,6 +65,16 @@ padding-bottom: 2rem;
   gap: 1rem;
 }
 
+.completed-card {
+  width: 100rem;
+  display: flex;
+  background-color: rgba(var(--cc-green), 0.2);
+  padding: 1rem;
+  border-radius: 1rem;
+  gap: 1rem;
+}
+
+
 .idea-img {
   max-width: 20rem;
   height: auto;
@@ -85,6 +95,7 @@ padding-bottom: 2rem;
 
 .idea-text {
   margin-top: 2rem;
+  white-space: pre-line;
 }
 
 .idea-fundings-container {
@@ -97,13 +108,17 @@ padding-bottom: 2rem;
 
 .funder-table > th, td {
   padding-right: 1rem;
-  padding-bottom: 0.5rem
+  padding-bottom: 0.5rem;
+  text-align: left;
 }
 
 .funder-table > thead {
   font-weight: 600;
-}
+  height: 2rem;
+  text-align: left;
 
+
+}
 
 .form {
   display: flex;
@@ -152,12 +167,13 @@ padding-bottom: 2rem;
   border: none;
   cursor: pointer;
   font-family: var(--ff-text);
-  background-color: lightgrey;
+  color: white;
+  background-color: var(--cc-darkgreen);
 }
 
 .form-upload::-webkit-file-upload-button:hover {
-  background-color: rgb(var(--c-light-green));
-  color: white;
+  background-color: rgb(var(--cc-green));
+
 }
 
 .form--btn {
@@ -172,14 +188,35 @@ padding-bottom: 2rem;
   color: white;
 }
 
-.form--btn:hover {
-  background-color: rgb(var(--c-dark-green));
+.form--btn:hover,
+.btn:hover {
+  background-color: rgb(var(--cc-green));
 }
 
-.long {
-  width: auto;
-  margin-top: 1rem;
+.btn {
+  width: 20rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  display: block;
+  cursor: pointer;
+  font-family: var(--ff-text);
+  background-color: var(--cc-darkgreen);
+  color: white;
 }
+
+
+.disabled-btn {
+  width: 20rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  display: block;
+  font-family: var(--ff-text);
+  background-color: grey;
+  color: white;
+}
+
 
 /* ALERT MESSAGE */
 
@@ -197,5 +234,18 @@ padding-bottom: 2rem;
 }
 .alert-danger {
   background-color: rgba(229, 152, 155, 0.2);
+}
+
+.completed-message {
+background-color: rgba(var(--cc-green), 0.4);
+padding: 1rem;
+border-radius: 1rem;
+
+}
+
+.admin-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 

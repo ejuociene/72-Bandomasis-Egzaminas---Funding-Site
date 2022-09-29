@@ -65,10 +65,11 @@ const NewIdea = () => {
           <input
             type="file"
             name="image"
+            className="form-upload"
             onChange={(e) => handleChange(e)}
           ></input>
         </div>
-        <button>Siųsti patvirtinimui</button>
+        <button className="btn">Siųsti patvirtinimui</button>
       </form>
     </div>
   );

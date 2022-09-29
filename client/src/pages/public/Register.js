@@ -73,7 +73,7 @@ const Register = () => {
         <button className="form--btn">Tęsti</button>
       </form>
       <Link to={"/login"} className="link">
-        ← Back
+        ← Atgal
       </Link>
     </main>
   );

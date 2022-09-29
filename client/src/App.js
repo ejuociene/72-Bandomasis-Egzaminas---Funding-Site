@@ -29,6 +29,7 @@ function App() {
         console.log(err);
       });
   }, [refresh]);
+  console.log(userInfo)
   return (
     <BrowserRouter>
       <MainContext.Provider value={contextValues}>

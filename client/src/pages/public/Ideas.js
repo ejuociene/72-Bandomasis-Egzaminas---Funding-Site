@@ -51,7 +51,7 @@ const Ideas = () => {
       <div className="idea-container">
         {ideas?.map((idea) => {
           return (
-            <div key={idea.id} className="idea-card">
+            <div key={idea.id} className={ idea.isCompleted? "completed-card" : "idea-card"}>
               <img src={idea.image} alt={idea.id} className="idea-img" />
               <div className="idea-info">
                 <div className="idea-header">
@@ -82,8 +82,7 @@ const Ideas = () => {
                         </tr>
                       );
                     })}
-					{idea.isCompleted ? <div>
-
+					{idea.isCompleted ? <div className="completed-message">
             Tikslas pasiektas!  
           </div> :
                     <tr>

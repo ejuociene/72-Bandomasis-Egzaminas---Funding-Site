@@ -6,7 +6,7 @@ import {auth}  from '../middleware/auth.js';
 
 const router = express.Router();
 
-router.get('/', auth, async (req, res) => {
+router.get('/', async (req, res) => {
 	try {
 		const ideas = await db.Ideas.findAll()
 		res.json(ideas);

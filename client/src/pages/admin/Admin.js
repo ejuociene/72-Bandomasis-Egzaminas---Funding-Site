@@ -60,10 +60,12 @@ const Admin = () => {
               </div>
               <div className="admin-actions">
                 <div>
-                  {idea.status ? "Patvirtinta" : "Laukia patvirtinimo"}
+                  Statusas: <span className="bold">
+                    {idea.status ? "Patvirtinta" : "Laukia patvirtinimo"}
+                    </span>
                 </div>
-                <button disabled={idea.status && "disabled"} onClick={() => confirmIdea(idea.id)}>Patvirtinti</button>
-                <button onClick={() => handleDelete(idea.id)}>Ištrinti</button>
+                <button disabled={idea.status && "disabled"} onClick={() => confirmIdea(idea.id)} className={idea.status ? "disabled-btn": "btn"}>Patvirtinti</button>
+                <button onClick={() => handleDelete(idea.id)} className="btn">Ištrinti</button>
               </div>
             </div>
           );
